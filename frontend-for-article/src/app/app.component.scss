@@ -1,0 +1,46 @@
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: linear-gradient(135deg, #1e1e1e, #262626);
+
+
+}
+
+app-header {
+    background-color: #007bff; // Set your header background color
+    color: #fff; // Set your header text color
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.content {
+    flex: 1; // Allow the content to take up the available space
+    padding: 20px;
+    background-color: #f4f4f4; // Set your content background color
+}
+
+app-footer {
+    background-color: #333; // Set your footer background color
+    color: #fff; // Set your footer text color
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    app-header {
+        font-size: 1.5rem; // Reduce header font size for smaller screens
+    }
+
+    .content {
+        padding: 10px; // Reduce content padding for smaller screens
+    }
+
+    app-footer {
+        font-size: 0.8rem; // Reduce footer font size for smaller screens
+    }
+}

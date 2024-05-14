@@ -1,0 +1,63 @@
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // padding: 10px;
+  // background-color: #3f51b5;
+
+  .nav-logo {
+    .Nav-header-text {
+      font-size: 2rem;
+      color: #fff;
+    }
+  }
+
+  .search-relative {
+    display: flex;
+    align-items: center;
+
+    .input-box {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .search-buttn {
+      background-color: #f44336;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      span {
+        margin: 8px 0;
+      }
+    }
+
+    span {
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 10px;
+      text-decoration: none;
+      color: #fff;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+  }
+}

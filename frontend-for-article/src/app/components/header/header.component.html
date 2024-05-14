@@ -1,0 +1,28 @@
+<nav class="nav-header">
+    <div class="nav-logo">
+      <span class="Nav-header-text" routerLink="/books">
+        Book Store
+      </span>
+    </div>
+    <div class="search-relative">
+      <input type="text" placeholder="Search Book" class="input-box" />
+      <button class="search-buttn">
+        Search
+      </button>
+      
+    </div>
+    <div class="nav-items">
+      <ng-container *ngIf="!isLoggedin">
+        <span routerLink="login" class="Login-text">Login</span>
+        <span routerLink="/register" class="register-text">Register</span>
+      </ng-container>
+      <span class="add-to-cart-text">Cart</span>
+      <ng-container *ngIf="isLoggedin">
+        <span class="welcome-text">Hello {{welcomeName}}</span>
+      <span routerLink="/books">Show Books</span>
+      <span routerLink="/book-create">Add Book</span>
+      <span routerLink="/book/create">About</span>
+        <span class="logout-text" (click)="logout()">Logout</span>
+      </ng-container>
+    </div>
+  </nav>

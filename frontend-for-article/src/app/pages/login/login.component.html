@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="login-container">
+        <div class="Login-header-container">
+            <div class="Login-header">
+                Facebook
+            </div>
+            <div class="Login-subheader">
+                Facebook helps you connect and share with the people in your life.
+            </div>
+        </div>
+        <div class="login-section">
+            <h3 class="header-text">Login</h3>
+            <form class="form-controls" [formGroup]="loginForm">
+                <div class="input-field">
+                    <input formControlName="email" class="p-2 border border-gray-300 rounded" type="text"
+                        placeholder="Email" />
+                    <!-- <span class="text-red-500">*Email is required</span> -->
+                </div>
+                <div class="input-field">
+                    <input formControlName="password" type="text" placeholder="Password" />
+                    <!-- <span class="text-red-500">*Password is required</span> -->
+                </div>
+                <button class="submit-button" (click)="login()">Submit</button>
+            </form>
+            <div class="reg-container">
+                <span class="register-here">Register Now</span>
+                <a routerLink="/register">Register Here</a>
+                <span class="forgot-password">Forget Password</span>
+                <a routerLink="/forget">Forget Password</a>
+            </div>
+        </div>
+    </div>
+</div>

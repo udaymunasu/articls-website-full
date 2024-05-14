@@ -1,0 +1,32 @@
+<div class="book-grid">
+    <div class="book-card" *ngFor="let book of booksData">
+        <div class="book-image">
+            <img [src]="book.volumeInfo.imageLinks.thumbnail" alt="Book Cover">
+        </div>
+        <div class="book-details">
+            <h2 class="book-title">{{ book.volumeInfo.title }}</h2>
+            <p *ngIf="book.volumeInfo.authors" class="book-author">By: {{ book.volumeInfo.authors.join(', ') }}</p>
+            <p *ngIf="book.volumeInfo.publisher" class="book-publisher">Publisher: {{ book.volumeInfo.publisher }}</p>
+            <p *ngIf="book.volumeInfo.publishedDate" class="book-published-date">Published Date: {{
+                book.volumeInfo.publishedDate }}</p>
+            <p *ngIf="book.volumeInfo.pageCount" class="book-page-count">Pages: {{ book.volumeInfo.pageCount }}</p>
+            <p *ngIf="book.volumeInfo.categories" class="book-categories">Categories: {{
+                book.volumeInfo.categories.join(', ') }}</p>
+            <p *ngIf="book.volumeInfo.language" class="book-language">Language: {{ book.volumeInfo.language }}</p>
+            <button class="show-more-button" *ngIf="isLongDescription(book.volumeInfo.description)"
+                (click)="toggleDescription(book)">
+                {{ book.showFullDescription ? 'Show Less' : 'Show More' }}
+            </button>
+            <div class="book-description" [class.expand]="book.showFullDescription" *ngIf="book.showFullDescription">
+                <p>{{ book.volumeInfo.description }}</p>
+            </div>
+            <div class="book-pricing">
+                <p *ngIf="book.saleInfo.listPrice" class="book-list-price">List Price: {{ book.saleInfo.listPrice.amount
+                    | currency: 'INR' }}</p>
+                <p *ngIf="book.saleInfo.retailPrice" class="book-retail-price">Retail Price: {{
+                    book.saleInfo.retailPrice.amount | currency: 'INR' }}</p>
+            </div>
+            <a class="buy-button" [href]="book.saleInfo.buyLink" target="_blank">Buy Now</a>
+        </div>
+    </div>
+</div>
