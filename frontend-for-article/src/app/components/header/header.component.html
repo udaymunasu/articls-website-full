@@ -1,15 +1,16 @@
 <nav class="nav-header">
-    <div class="nav-logo">
+    <div class="nav-logo" routerLink="/">
+      <img class="logo-img" src="https://www.simicart.com/blog/wp-content/uploads/eCommerce-logo-1.jpg" alt="pic" />
+
       <span class="Nav-header-text" routerLink="/books">
-        Book Store
+        Shopping
       </span>
     </div>
     <div class="search-relative">
       <input type="text" placeholder="Search Book" class="input-box" />
       <button class="search-buttn">
-        Search
+          <div class="px-icons search"></div>
       </button>
-      
     </div>
     <div class="nav-items">
       <ng-container *ngIf="!isLoggedin">
