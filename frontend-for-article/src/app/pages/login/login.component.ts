@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   loginForm;
+  showPassword: boolean = true;
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -29,16 +30,21 @@ export class LoginComponent implements OnInit {
     // console.log("login values", this.loginForm.value)
     this.auth.loginService(this.loginForm.value).subscribe({
       next: (res) => {
-        console.log("res.user_id", res)
+        console.log('res.user_id', res);
         if (res && res.user) {
           this.auth.setUserIdInLocalStorage(res.user);
           this.router.navigate(['home']);
         }
-        
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    const passwordField = document.getElementById("password") as HTMLInputElement;
+    passwordField.type = this.showPassword ? "text" : "password";
   }
 }

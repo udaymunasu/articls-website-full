@@ -10,6 +10,9 @@
         </div>
         <div class="login-section">
             <h3 class="header-text">Login</h3>
+            <div class="login-logo">
+                <img src="../../../assets/signin.gif" alt="">
+            </div>
             <form class="form-controls" [formGroup]="loginForm">
                 <div class="input-field">
                     <input formControlName="email" class="p-2 border border-gray-300 rounded" type="text"
@@ -17,7 +20,12 @@
                     <!-- <span class="text-red-500">*Email is required</span> -->
                 </div>
                 <div class="input-field">
-                    <input formControlName="password" type="text" placeholder="Password" />
+                    <div class="password-container">
+                        <input id="password" formControlName="password" type="password" placeholder="Password" />
+                        <div id="togglePassword" (click)="togglePasswordVisibility()">
+                            <span [class]="'px-icons eye-icon ' + (showPassword ? 'closed-eye' : 'open-eye')"></span>
+                        </div>
+                    </div>
                     <!-- <span class="text-red-500">*Password is required</span> -->
                 </div>
                 <button class="submit-button" (click)="login()">Submit</button>
