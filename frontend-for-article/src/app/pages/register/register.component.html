@@ -1,32 +1,48 @@
 <div class="register-container">
     <h3>Register</h3>
     <form [formGroup]="registerForm">
-        <div class="input-field">
-            <input formControlName="firstname" type="text" placeholder="FirstName">
-            <span *ngIf="registerForm.hasError('required', 'firstname') && registerForm.controls['firstname'].dirty" class="text-red">*FirstName is required</span>
+        <div class="login-logo">
+            <input #fileInput type="file" class="upload-input" (change)="onFileSelected($event)" />
+            <div class="image-container">
+                <img src="../../../assets/signin.gif" alt="">
+            </div>
+            <div class="upload-text">Upload photo</div>
         </div>
-        <div class="input-field">
-            <input formControlName="lastname" type="text" placeholder="LastName">
-            <!-- <span class="text-red-500">*LastName is required</span> -->
+        <div class="inputs-wrapper">
+            <div class="input-field">
+                <input formControlName="firstname" type="text" placeholder="FirstName">
+                <span *ngIf="registerForm.hasError('required', 'firstname') && registerForm.controls['firstname'].dirty"
+                    class="text-red">*FirstName is required</span>
+            </div>
+            <div class="input-field">
+                <input formControlName="lastname" type="text" placeholder="LastName">
+                <!-- <span class="text-red-500">*LastName is required</span> -->
+            </div>
         </div>
-        <div class="input-field">
-            <input formControlName="email" type="text" placeholder="Email">
-            <!-- <span class="text-red-500">*Email is required</span> -->
+        <div class="inputs-wrapper">
+            <div class="input-field">
+                <input formControlName="email" type="text" placeholder="Email">
+                <!-- <span class="text-red-500">*Email is required</span> -->
+            </div>
+            <div class="input-field">
+                <input formControlName="username" type="text" placeholder="UserName">
+                <!-- <span class="text-red-500">*Username is required</span> -->
+            </div>
         </div>
-        <div class="input-field">
-            <input formControlName="username" type="text" placeholder="UserName">
-            <!-- <span class="text-red-500">*Username is required</span> -->
-        </div>
-        <div class="input-field">
-            <input formControlName="password" type="text" placeholder="Password">
-            <span *ngIf="registerForm.hasError('required', 'password') && registerForm.controls['password'].dirty" 
-             class="text-red">*Password is required</span>
-        </div>
-        <div class="input-field">
-            <input formControlName="confirmPassword" type="text" placeholder="Confirm Password">
-            <span *ngIf="registerForm.hasError('required', 'confirmPassword') && registerForm.controls['confirmPassword'].dirty" 
-            class="text-red">*confirmPassword is required</span>
-            <span *ngIf="registerForm.hasError('confirmPasswordValidator', 'confirmPassword')" class="text-red">*Passwords do not match</span>
+        <div class="inputs-wrapper">
+            <div class="input-field">
+                <input formControlName="password" type="text" placeholder="Password">
+                <span *ngIf="registerForm.hasError('required', 'password') && registerForm.controls['password'].dirty"
+                    class="text-red">*Password is required</span>
+            </div>
+            <div class="input-field">
+                <input formControlName="confirmPassword" type="text" placeholder="Confirm Password">
+                <span
+                    *ngIf="registerForm.hasError('required', 'confirmPassword') && registerForm.controls['confirmPassword'].dirty"
+                    class="text-red">*confirmPassword is required</span>
+                <span *ngIf="registerForm.hasError('confirmPasswordValidator', 'confirmPassword')"
+                    class="text-red">*Passwords do not match</span>
+            </div>
         </div>
         <button type="button" class="submit-button" (click)="register()">Register</button>
     </form>

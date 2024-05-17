@@ -17,9 +17,11 @@ app-header {
 }
 
 .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1; // Allow the content to take up the available space
     padding: 20px;
-    background-color: #f4f4f4; // Set your content background color
 }
 
 app-footer {

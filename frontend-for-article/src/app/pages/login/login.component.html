@@ -1,41 +1,64 @@
-<div class="card">
-    <div class="login-container">
-        <div class="Login-header-container">
-            <div class="Login-header">
-                Facebook
-            </div>
-            <div class="Login-subheader">
-                Facebook helps you connect and share with the people in your life.
-            </div>
-        </div>
-        <div class="login-section">
-            <h3 class="header-text">Login</h3>
-            <div class="login-logo">
-                <img src="../../../assets/signin.gif" alt="">
-            </div>
-            <form class="form-controls" [formGroup]="loginForm">
-                <div class="input-field">
-                    <input formControlName="email" class="p-2 border border-gray-300 rounded" type="text"
-                        placeholder="Email" />
-                    <!-- <span class="text-red-500">*Email is required</span> -->
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <app-register></app-register>
+    </div>
+    <div class="form-container sign-in-container">
+        <div class="card">
+            <div class="login-container">
+                <div class="Login-header-container">
+                    <div class="Login-header">
+                        Login
+                    </div>
                 </div>
-                <div class="input-field">
-                    <div class="password-container">
-                        <input id="password" formControlName="password" type="password" placeholder="Password" />
-                        <div id="togglePassword" (click)="togglePasswordVisibility()">
-                            <span [class]="'px-icons eye-icon ' + (showPassword ? 'closed-eye' : 'open-eye')"></span>
+                <form [formGroup]="loginForm">
+
+                    <div class="login-section">
+                        <div class="login-logo">
+                            <div class="image-container">
+                                <img src="../../../assets/signin.gif" alt="">
+                            </div>
+                            <div class="upload-text">Upload photo</div>
+                        </div>
+                        <div class="input-field">
+                            <input formControlName="email" class="p-2 border border-gray-300 rounded" type="text"
+                                placeholder="Email" />
+                            <!-- <span class="text-red-500">*Email is required</span>  -->
+                        </div>
+                        <div class="input-field">
+                            <div class="password-container">
+                                <input id="password" formControlName="password" type="password"
+                                    placeholder="Password" /> 
+                                <div id="togglePassword"
+                                [class]="'eye-icon px-icons ' + (showPassword ? 'closed-eye' : 'open-eye')" (click)="togglePasswordVisibility()">
+                                </div>
+                            </div>
+                            <!-- <span class="text-red-500">*Password is required</span> -->
+                        </div>
+                        <button class="submit-button" (click)="login()">Submit</button>
+                        <div class="reg-container">
+                            <a routerLink="/register">Register Here</a>
+                            <a routerLink="/forget" class="forget-password">Forget Password?</a>
                         </div>
                     </div>
-                    <!-- <span class="text-red-500">*Password is required</span> -->
-                </div>
-                <button class="submit-button" (click)="login()">Submit</button>
-            </form>
-            <div class="reg-container">
-                <span class="register-here">Register Now</span>
-                <a routerLink="/register">Register Here</a>
-                <span class="forgot-password">Forget Password</span>
-                <a routerLink="/forget">Forget Password</a>
+                </form>
+
             </div>
         </div>
     </div>
+    <div class="overlay-container" id="overlayCon">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button>Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button>Sign Up</button>
+            </div>
+        </div>
+        <button id="overlayBtn" (click)="toggleRightPanel()"></button>
+    </div>
 </div>
+

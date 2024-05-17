@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group(
       {
+        image: [''],
         firstname: ['', Validators.required],
         lastname: ['', Validators.required],
         username: ['', Validators.required],
@@ -61,5 +62,56 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  imageUrl
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions to the scaled size
+        const maxWidth = 600; // Adjust this according to your requirement
+        const maxHeight = 400; // Adjust this according to your requirement
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw image on canvas
+        ctx?.drawImage(img, 0, 0, width, height);
+
+        // Convert canvas to base64 string
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7); // Adjust quality as needed
+
+        // Update form value
+        this.registerForm.patchValue({
+          image: compressedBase64,
+        });
+
+        console.log('Selected Image:', compressedBase64);
+      };
+    };
+
+    reader.readAsDataURL(file);
+  }
 }
